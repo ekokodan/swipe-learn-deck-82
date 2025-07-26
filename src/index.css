@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,97 +10,153 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Enhanced Background System */
+    --background: 0 0% 99%;
+    --background-secondary: 240 5% 97%;
+    --background-accent: linear-gradient(135deg, hsl(240 5% 99%) 0%, hsl(238 30% 98%) 100%);
+    --foreground: 240 10% 8%;
 
+    /* Sophisticated Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 8%;
+    --card-shadow: 240 10% 20%;
+    --card-shadow-hover: 238 40% 35%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Premium Primary Colors */
+    --primary: 238 70% 20%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 238 70% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Elegant Secondary System */
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 15%;
+    --secondary-hover: 240 8% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 45%;
 
-    /* Learning Deck color system */
-    --accent: 238 90% 60%;
+    /* Premium Learning Deck color system */
+    --accent: 238 85% 65%;
     --accent-foreground: 0 0% 100%;
-    --accent-hover: 238 90% 66%;
-    --accent-muted: 238 90% 95%;
+    --accent-hover: 238 85% 70%;
+    --accent-muted: 238 85% 96%;
+    --accent-glow: 238 85% 80%;
     
-    --success: 142 76% 36%;
+    /* Success & Error with more sophistication */
+    --success: 142 70% 45%;
     --success-foreground: 0 0% 100%;
-    --error: 0 84% 60%;
+    --success-glow: 142 70% 70%;
+    --error: 0 75% 60%;
     --error-foreground: 0 0% 100%;
+    --error-glow: 0 75% 80%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 238 90% 60%;
+    /* Refined Borders */
+    --border: 240 10% 90%;
+    --border-accent: 238 30% 85%;
+    --input: 240 10% 93%;
+    --ring: 238 85% 65%;
 
-    --radius: 0.75rem;
+    /* Enhanced Radius */
+    --radius: 1rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-glow)) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1) 0%, hsl(0 0% 100% / 0.05) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px hsl(var(--card-shadow) / 0.05);
+    --shadow-md: 0 4px 12px hsl(var(--card-shadow) / 0.1);
+    --shadow-lg: 0 8px 24px hsl(var(--card-shadow) / 0.15);
+    --shadow-xl: 0 16px 48px hsl(var(--card-shadow) / 0.2);
+    --shadow-glow: 0 0 32px hsl(var(--accent) / 0.3);
+
+    /* Animation Variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Enhanced Dark Background System */
+    --background: 240 10% 4%;
+    --background-secondary: 240 8% 6%;
+    --background-accent: linear-gradient(135deg, hsl(240 10% 4%) 0%, hsl(238 20% 6%) 100%);
+    --foreground: 240 5% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Dark Card System */
+    --card: 240 8% 7%;
+    --card-foreground: 240 5% 95%;
+    --card-shadow: 240 20% 2%;
+    --card-shadow-hover: 238 60% 20%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 8% 7%;
+    --popover-foreground: 240 5% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Dark Primary Colors */
+    --primary: 238 70% 85%;
+    --primary-foreground: 240 10% 8%;
+    --primary-glow: 238 70% 70%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Dark Secondary System */
+    --secondary: 240 8% 12%;
+    --secondary-foreground: 240 5% 85%;
+    --secondary-hover: 240 8% 16%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 8% 12%;
+    --muted-foreground: 240 5% 60%;
 
-    /* Learning Deck dark mode colors */
-    --accent: 238 90% 70%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --accent-hover: 238 90% 76%;
-    --accent-muted: 238 90% 15%;
+    /* Dark Learning Deck colors */
+    --accent: 238 85% 75%;
+    --accent-foreground: 240 10% 8%;
+    --accent-hover: 238 85% 80%;
+    --accent-muted: 238 85% 15%;
+    --accent-glow: 238 85% 60%;
     
-    --success: 142 76% 46%;
-    --success-foreground: 222.2 84% 4.9%;
-    --error: 0 84% 70%;
-    --error-foreground: 222.2 84% 4.9%;
+    --success: 142 70% 55%;
+    --success-foreground: 240 10% 8%;
+    --success-glow: 142 70% 40%;
+    --error: 0 75% 70%;
+    --error-foreground: 240 10% 8%;
+    --error-glow: 0 75% 50%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 238 90% 70%;
+    /* Dark Borders */
+    --border: 240 8% 15%;
+    --border-accent: 238 30% 20%;
+    --input: 240 8% 12%;
+    --ring: 238 85% 75%;
+
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-glow)) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.05) 0%, hsl(0 0% 100% / 0.02) 100%);
+    
+    /* Dark Shadows */
+    --shadow-sm: 0 2px 4px hsl(var(--card-shadow) / 0.3);
+    --shadow-md: 0 4px 12px hsl(var(--card-shadow) / 0.4);
+    --shadow-lg: 0 8px 24px hsl(var(--card-shadow) / 0.5);
+    --shadow-xl: 0 16px 48px hsl(var(--card-shadow) / 0.6);
+    --shadow-glow: 0 0 32px hsl(var(--accent) / 0.2);
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -120,14 +176,53 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--background-accent);
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
 @layer components {
-  /* Learning Deck specific animations */
+  /* Typography Classes */
+  .heading-serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  
+  .text-elegant {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+
+  /* Glass Morphism Effects */
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+  
+  .glass-card {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-smooth);
+  }
+  
+  .glass-card:hover {
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  /* Enhanced Card Animations */
   .card-entrance {
-    @apply transform transition-all duration-500 ease-out;
-    transform: scale(0.9) translateY(10px);
+    transition: var(--transition-spring);
+    transform: scale(0.95) translateY(20px);
     opacity: 0;
   }
   
@@ -136,6 +231,73 @@ All colors MUST be HSL.
     opacity: 1;
   }
   
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  /* Interactive Button Effects */
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--accent-foreground) / 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .btn-glow:hover::before {
+    left: 100%;
+  }
+  
+  /* Enhanced Progress */
+  .progress-segment {
+    transition: var(--transition-smooth);
+    border-radius: 2px;
+  }
+  
+  .progress-segment.active {
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-glow);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Floating Action Button */
+  .fab {
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-spring);
+  }
+  
+  .fab:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+  }
+  
+  /* Navigation Dots */
+  .nav-dot {
+    transition: var(--transition-smooth);
+    border-radius: 50%;
+  }
+  
+  .nav-dot:hover {
+    transform: scale(1.2);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Shake Animation */
   .shake-error {
     animation: shake 0.5s ease-in-out;
   }
@@ -146,12 +308,23 @@ All colors MUST be HSL.
     75% { transform: rotate(1deg); }
   }
   
-  .progress-segment {
-    @apply transition-all duration-300 ease-out;
+  @keyframes pulse-glow {
+    0%, 100% { 
+      opacity: 1; 
+      box-shadow: var(--shadow-glow);
+    }
+    50% { 
+      opacity: 0.8; 
+      box-shadow: 0 0 16px hsl(var(--accent) / 0.2);
+    }
   }
   
-  .progress-segment.active {
-    @apply bg-accent;
-    box-shadow: 0 0 8px hsl(var(--accent) / 0.4);
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+  
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
   }
 }

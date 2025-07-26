@@ -148,28 +148,32 @@ export const LearningDeckViewer = ({
   return (
     <div className={`min-h-screen bg-background ${className}`}>
       {/* Header */}
-      <DeckHeader
-        title={deck.title}
-        level={deck.level}
-        language={language}
-        onLanguageChange={handleLanguageChange}
-        onSettingsClick={onSettingsClick || (() => {})}
-      />
+      <div className="glass-card sticky top-0 z-50 border-b backdrop-blur-xl">
+        <DeckHeader
+          title={deck.title}
+          level={deck.level}
+          language={language}
+          onLanguageChange={handleLanguageChange}
+          onSettingsClick={onSettingsClick || (() => {})}
+        />
+      </div>
 
       {/* Progress Bar */}
-      <ProgressBar
-        total={deck.cards.length}
-        current={currentIndex}
-        milestones={milestones}
-      />
+      <div className="glass sticky top-[70px] z-40 border-b">
+        <ProgressBar
+          total={deck.cards.length}
+          current={currentIndex}
+          milestones={milestones}
+        />
+      </div>
 
       {/* Main Content Area */}
       <div className="relative flex-1">
         {/* Card Carousel */}
-        <div className="container px-4 py-6">
+        <div className="container px-6 py-8">
           <Swiper
             modules={[Navigation, Keyboard, A11y]}
-            spaceBetween={16}
+            spaceBetween={24}
             slidesPerView={1}
             keyboard={{
               enabled: true,
@@ -194,11 +198,11 @@ export const LearningDeckViewer = ({
             breakpoints={{
               640: {
                 slidesPerView: 1,
-                spaceBetween: 16,
+                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 1,
-                spaceBetween: 24,
+                spaceBetween: 28,
               },
               1024: {
                 slidesPerView: 1,
@@ -206,13 +210,25 @@ export const LearningDeckViewer = ({
               },
             }}
             className="learning-deck-swiper"
-            style={{ paddingBottom: '60px' }}
+            style={{ paddingBottom: '80px' }}
           >
             {deck.cards.map((card, index) => (
               <SwiperSlide key={card.id}>
-                <div className="w-full h-[70vh] max-w-4xl mx-auto">
+                <motion.div 
+                  className="w-full h-[70vh] max-w-5xl mx-auto"
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ 
+                    opacity: index === currentIndex ? 1 : 0.7, 
+                    scale: index === currentIndex ? 1 : 0.98,
+                    y: 0 
+                  }}
+                  transition={{ 
+                    duration: 0.5,
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                >
                   {renderCard(card, index === currentIndex)}
-                </div>
+                </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -227,54 +243,74 @@ export const LearningDeckViewer = ({
         </div>
 
         {/* Navigation Controls */}
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
+        <motion.div 
+          className="absolute left-6 top-1/2 -translate-y-1/2 z-10"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3 }}
+        >
           <Button
             variant="outline"
             size="icon"
             onClick={goToPrevious}
             disabled={currentIndex === 0}
-            className="rounded-full bg-background/80 backdrop-blur border-2 hover:bg-accent hover:text-accent-foreground"
+            className="glass-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-40 disabled:scale-95 h-12 w-12 border-2"
             aria-label="Previous card"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-6 w-6" />
           </Button>
-        </div>
+        </motion.div>
 
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
+        <motion.div 
+          className="absolute right-6 top-1/2 -translate-y-1/2 z-10"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3 }}
+        >
           <Button
             variant="outline"
             size="icon"
             onClick={goToNext}
             disabled={currentIndex === deck.cards.length - 1}
-            className="rounded-full bg-background/80 backdrop-blur border-2 hover:bg-accent hover:text-accent-foreground"
+            className="glass-card rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-40 disabled:scale-95 h-12 w-12 border-2"
             aria-label="Next card"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-6 w-6" />
           </Button>
-        </div>
+        </motion.div>
 
         {/* More Info Button */}
-        <div className="absolute bottom-20 right-4 z-10">
+        <motion.div 
+          className="absolute bottom-24 right-6 z-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
           <Button
             onClick={() => setIsDrawerOpen(true)}
-            className="rounded-full bg-accent hover:bg-accent-hover text-accent-foreground"
+            className="fab rounded-full px-6 py-3 btn-glow"
             aria-label="More information"
           >
             <Info className="h-5 w-5 mr-2" />
-            More Info
+            <span className="font-medium">More Info</span>
           </Button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Quick Navigation */}
-      <div className="border-t bg-background/95 backdrop-blur">
+      <motion.div 
+        className="glass-card border-t backdrop-blur-xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+      >
         <QuickNav
           total={deck.cards.length}
           current={currentIndex}
           milestones={milestones}
           onNavigate={goToSlide}
         />
-      </div>
+      </motion.div>
 
       {/* More Info Drawer */}
       <MoreInfoDrawer
